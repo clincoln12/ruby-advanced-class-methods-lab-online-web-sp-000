@@ -53,9 +53,11 @@ class Song
   end
   
   def self.create_from_filename(name)
-    new_from_filename(name)
-    @@all << name
-  
+    song = self.new 
+    song.name = name.split(" - ")[1].gsub(".mp3", "")
+    song.artist_name = name.split(" - ")[0]
+    song
+    @@all << song
   end
 
 end
